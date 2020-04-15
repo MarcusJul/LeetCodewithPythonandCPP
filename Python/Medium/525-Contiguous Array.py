@@ -3,12 +3,10 @@ class Solution:
         
         s = 0
         l = len(nums)
-        presum = [0]*l
         d = {0:-1}
         m = 0
         for i in range(l):
             s += 1 if nums[i]==1 else -1
-            presum[i] = s
             if s not in d:
                 d[s] = i
             else:
