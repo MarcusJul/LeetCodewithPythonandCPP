@@ -75,13 +75,10 @@ class Solution:
         
         left, right = 0, n*m-1
         
-        def getRowCol(mid):
-            row, col = mid//n, mid%n 
-            return row, col
         
         while(left<=right):
             mid = (left+right)//2
-            row, col = getRowCol(mid)
+            row, col = mid//n, mid%n 
             if matrix[row][col]==target:
                 return True
             else:
