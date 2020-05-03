@@ -56,3 +56,38 @@ class Solution:
             res = matrix[mid][0]==target
         
         return res 
+
+# solution 2
+class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        
+        if matrix==[[]]:
+            return False
+        m = len(matrix)
+        if m==0:
+            return False
+        n = len(matrix[0])
+        
+        if matrix[m-1][n-1]<target:
+            return False
+        if matrix[0][0]>target:
+            return False
+        
+        left, right = 0, n*m-1
+        
+        def getRowCol(mid):
+            row, col = mid//n, mid%n 
+            return row, col
+        
+        while(left<=right):
+            mid = (left+right)//2
+            row, col = getRowCol(mid)
+            if matrix[row][col]==target:
+                return True
+            else:
+                if matrix[row][col]<target:
+                    left = mid+1
+                else:
+                    right = mid-1
+                
+        return False
